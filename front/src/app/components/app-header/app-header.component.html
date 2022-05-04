@@ -1,0 +1,12 @@
+<nav class="h-12 px-4 bg-slate-100 border-b-2 flex flex-row-reverse items-center">
+  <div class="navbar__item">
+    <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">More</span>
+    <fa-icon class="navbar__button" [icon]="faBars" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
+  </div>
+  <div class="navbar__item" (click)="expandUserMenu()">
+    <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">Account</span>
+    <fa-icon class="navbar__button" [icon]="faUser" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
+  </div>
+</nav>
+<app-user-menu [expanded]="userMenuExpanded" (visibilityChange)="changeVisibility($event)"></app-user-menu>
+

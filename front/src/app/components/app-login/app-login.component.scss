@@ -1,0 +1,11 @@
+.sign-in {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sign-in--disabled {
+  cursor: default;
+  background-color: lightgray;
+  color: gray;
+  transition: background-color 0.2s;
+}

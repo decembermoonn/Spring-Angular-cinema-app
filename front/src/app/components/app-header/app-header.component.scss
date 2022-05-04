@@ -1,0 +1,7 @@
+.navbar__item:not(:first-child) {
+  margin-right: 1rem;
+}
+
+.navbar__button {
+  cursor: pointer;
+}

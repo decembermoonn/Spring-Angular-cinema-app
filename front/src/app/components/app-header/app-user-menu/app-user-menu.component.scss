@@ -1,0 +1,13 @@
+.row--hidden {
+  border-bottom-width: 0;
+  height: 0;
+}
+
+.row {
+  transition: height 0.2s, border-bottom-width 0.2s;
+  overflow: hidden;
+
+  .row__button {
+    cursor: pointer;
+  }
+}

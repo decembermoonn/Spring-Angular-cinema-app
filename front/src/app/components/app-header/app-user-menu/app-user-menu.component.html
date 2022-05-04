@@ -1,0 +1,8 @@
+<nav
+  [ngClass]="{'row--hidden': !isRowExapnded, 'border-b-2': isRowExapnded}"
+  class="row h-12 px-4 bg-slate-50 flex flex-row-reverse items-center"
+>
+  <div>
+    <span class="row__button pr-2 font-bold text-slate-600" (click)="redirectToLoginPage()">Login</span>
+  </div>
+</nav>
