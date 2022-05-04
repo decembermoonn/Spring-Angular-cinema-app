@@ -4,9 +4,17 @@
     <fa-icon class="navbar__button" [icon]="faBars" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
   </div>
   <div class="navbar__item" (click)="expandUserMenu()">
-    <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">Account</span>
-    <fa-icon class="navbar__button" [icon]="faUser" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
+    <ng-container *ngIf="localUser; else templateForGuests">
+      <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">{{localUser.username}}</span>
+      <img class="navbar__button navbar__avatar border" alt="Avatar" src="/assets/avatar.jpg" width="40" height="40">
+    </ng-container>
   </div>
 </nav>
-<app-user-menu [expanded]="userMenuExpanded" (visibilityChange)="changeVisibility($event)"></app-user-menu>
+<app-user-menu [user]="localUser" [expanded]="userMenuExpanded"
+               (visibilityChange)="changeVisibility($event)"></app-user-menu>
+
+<ng-template #templateForGuests>
+  <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">Account</span>
+  <fa-icon class="navbar__button" [icon]="faUser" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
+</ng-template>
 

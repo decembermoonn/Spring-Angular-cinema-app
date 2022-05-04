@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { OptionalUser } from '../../../models/user';
 
 @Component({
   selector: 'app-user-menu',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppUserMenuComponent {
   @Input('expanded') isRowExapnded = false;
+  @Input('user') localUser: OptionalUser;
 
   @Output() visibilityChange = new EventEmitter<boolean>();
 
@@ -17,5 +19,9 @@ export class AppUserMenuComponent {
     this.isRowExapnded = false;
     this.visibilityChange.next(false);
     this.router.navigate(['login']);
+  }
+
+  logout(): void {
+    console.warn("logout placeholder")
   }
 }

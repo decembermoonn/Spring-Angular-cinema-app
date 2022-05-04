@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  cinemaApiUrl: 'http://localhost:8080'
 };

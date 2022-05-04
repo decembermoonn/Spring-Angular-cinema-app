@@ -1,8 +1,6 @@
-export interface User {
-  id: number;
+interface User {
   username: string;
-  password: string;
-  firstName?: string;
-  lastName?: string;
   authData?: string;
 }
+
+export type OptionalUser = User | undefined;

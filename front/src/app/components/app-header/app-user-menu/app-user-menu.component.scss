@@ -1,10 +1,17 @@
 .row--hidden {
+  transition: max-height 0.2s, border-bottom-width 0.1s;
   border-bottom-width: 0;
-  height: 0;
+  max-height: 0;
+}
+
+.row--visible {
+  transition: max-height 0.2s, border-bottom-width 0.1s;
+  // hack which solves problem with no possibility to animate with max-height: auto without JS
+  // it allows only three rows...
+  max-height: 102px;
 }
 
 .row {
-  transition: height 0.2s, border-bottom-width 0.2s;
   overflow: hidden;
 
   .row__button {

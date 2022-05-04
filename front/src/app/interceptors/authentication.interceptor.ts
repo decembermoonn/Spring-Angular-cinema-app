@@ -13,7 +13,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
    * @param next
    */
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const currentUser = this.authService.currentUser;
+    const currentUser = this.authService.currentUserValue;
     if (currentUser && currentUser.authData) {
       req = req.clone({
         setHeaders: {

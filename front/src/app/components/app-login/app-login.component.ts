@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,22 +9,33 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./app-login.component.scss'],
 })
 export class AppLoginComponent {
+  showError = false;
   signUpForm = this.formBuilder.group({
     login: '',
     password: '',
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private auth: AuthenticationService, private router: Router) {
+    if (this.auth.currentUserValue) {
+      this.router.navigate(['']);
+    }
+  }
 
   isButtonDisabled(): boolean {
     return !Object.values(this.signUpForm.controls).every((e) => e.value);
   }
 
   onFormSubmission(): void {
-    const loginData = {
-      login: this.signUpForm.get('login')?.value,
-      password: this.signUpForm.get('password')?.value,
-    };
-    console.log(loginData);
+    this.showError = false;
+    const login = this.signUpForm.get('login')?.value;
+    const password = this.signUpForm.get('password')?.value;
+    this.auth.login(login, password).subscribe({
+      next: () => {
+        this.router.navigate(['']);
+      },
+      error: () => {
+        this.showError = true;
+      },
+    });
   }
 }

@@ -1,8 +1,16 @@
 <nav
-  [ngClass]="{'row--hidden': !isRowExapnded, 'border-b-2': isRowExapnded}"
-  class="row h-12 px-4 bg-slate-50 flex flex-row-reverse items-center"
+  [ngClass]="{'row--hidden border-b-0': !isRowExapnded, 'border-b-2 row--visible': isRowExapnded}"
+  class="row px-4 bg-slate-50 flex flex-col justify-end items-end"
 >
-  <div>
-    <span class="row__button pr-2 font-bold text-slate-600" (click)="redirectToLoginPage()">Login</span>
-  </div>
+  <ng-container *ngIf="localUser; else guestUser">
+    <div class="flex py-1">
+      <span class="row__button font-bold text-slate-600" (click)="logout()">Logout</span>
+    </div>
+  </ng-container>
 </nav>
+
+<ng-template #guestUser>
+  <div class="flex py-1">
+    <span class="row__button font-bold text-slate-600" (click)="redirectToLoginPage()">Login</span>
+  </div>
+</ng-template>
