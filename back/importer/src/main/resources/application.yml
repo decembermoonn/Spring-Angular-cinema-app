@@ -1,0 +1,18 @@
+spring:
+  main:
+    web-application-type: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Cinema
+    username: postgres
+    password: bartiq132
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+settings:
+  api-base: https://imdb-api.com
+  api-uri: /en/API/Top250Movies/
+  api-key: k_0fx2fp5n
