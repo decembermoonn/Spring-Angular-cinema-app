@@ -1,8 +1,13 @@
 <div class="layout">
   <app-movie-settings (onSettingsRedefine)="handleSettingsRedefinition($event)"></app-movie-settings>
-  <div *ngFor="let movie of movies | async">
-    <hr/>
-    <p>{{movie.title}}</p>
-    <p>{{movie.year}}</p>
+  <div class="movies">
+    <section class="movies__movie" *ngFor="let movie of movies | async">
+      <hr/>
+      <app-movie [movie]="movie"></app-movie>
+    </section>
+  </div>
+  <div class="pager">
+    <button class="pager__button" (click)="getPrevPage()">Previous Page</button>
+    <button class="pager__button" (click)="getNextPage()">Next Page</button>
   </div>
 </div>

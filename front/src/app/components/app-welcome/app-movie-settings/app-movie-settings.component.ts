@@ -29,7 +29,9 @@ export class AppMovieSettingsComponent implements OnDestroy {
   }
 
   emitSettings(): void {
-    const movieRequestData: MovieRequestData = {};
+    const movieRequestData: MovieRequestData = {
+      page: 0
+    };
     const sort = this.movieSort.value;
     const query = this.movieQuery.value;
     if (sort) movieRequestData['sort'] = sort;

@@ -12,7 +12,7 @@ export type MovieSort = 'a-z'|'z-a'|'ratingAsc'|'ratingDesc';
 export interface MovieRequestData {
   sort?: MovieSort;
   query?: string;
-  page?: number;
+  page: number;
 }
 
 export interface MovieRequestParams {

@@ -1,0 +1,45 @@
+.movie-container {
+  display:flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  .movie-container__image {
+    //TODO -some blurring
+  }
+
+  .movie-container__text {
+    flex: 1 0 70%;
+
+    .movie-container__text--title {
+      font-weight: bold;
+      font-family: Tahoma, sans-serif;
+      font-size: 1.2rem;
+    }
+
+    .movie-container__text--crew {
+      font-size: 0.8rem;
+      color: gray;
+    }
+  }
+
+  .movie-container__ratings {
+    text-align: right;
+    flex: 1 0 30%;
+
+    .movie-container__ratings--rating {
+      font-size: 1.2rem;
+      font-weight: bolder;
+    }
+
+    .movie-container__ratings--count {
+      font-size: 0.8rem;
+      color: gray;
+    }
+  }
+}
+
+.movie-container--outer {
+  display: flex;
+  width: 100%;
+  margin: 0.2rem;
+}

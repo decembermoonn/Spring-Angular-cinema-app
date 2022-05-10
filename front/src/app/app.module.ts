@@ -12,9 +12,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 import { AppWelcomeComponent } from './components/app-welcome/app-welcome.component';
 import { AppMovieSettingsComponent } from './components/app-welcome/app-movie-settings/app-movie-settings.component';
+import { AppMovieComponent } from './components/app-welcome/app-movie/app-movie.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent],
+  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
   bootstrap: [AppComponent],

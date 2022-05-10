@@ -20,5 +20,5 @@ public class Movie {
     String imageUrl;
     String crew;
     double imDbRating;
-    double imDbRatingCount;
+    int imDbRatingCount;
 }

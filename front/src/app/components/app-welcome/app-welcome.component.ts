@@ -10,7 +10,9 @@ import { Movie, MovieRequestData } from '../../models/movie';
 })
 export class AppWelcomeComponent implements OnInit {
   movies: Observable<Movie[]>;
-  moviesRequestData: MovieRequestData = {};
+  moviesRequestData: MovieRequestData = {
+    page: 0,
+  };
 
   constructor(private movieService: MoviesService) {
     this.movies = movieService.currentMovies;
@@ -23,7 +25,20 @@ export class AppWelcomeComponent implements OnInit {
   }
 
   handleSettingsRedefinition(movieRequestData: MovieRequestData): void {
+    const { page } = this.moviesRequestData;
+    movieRequestData.page = page;
     this.moviesRequestData = movieRequestData;
+    this.requestMovies();
+  }
+
+  getNextPage(): void {
+    this.moviesRequestData.page += 1;
+    this.requestMovies();
+  }
+
+  getPrevPage(): void {
+    if(this.moviesRequestData.page == 0) return;
+    this.moviesRequestData.page -=1;
     this.requestMovies();
   }
 
