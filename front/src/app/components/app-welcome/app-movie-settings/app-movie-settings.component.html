@@ -1,0 +1,12 @@
+<label>Choose sorting order
+  <select name="cars" [formControl]="movieSort">
+    <option value="a-z">By title (A-Z)</option>
+    <option value="z-a">By title (Z-A)</option>
+    <option value="ratingAsc">By rating (ascending)</option>
+    <option value="ratingDesc">By rating (descending)</option>
+    <option value="" [selected]="true">None</option>
+  </select>
+</label>
+<label> Search by:
+  <input type="text" name="query" placeholder="Query text" [formControl]="movieQuery">
+</label>

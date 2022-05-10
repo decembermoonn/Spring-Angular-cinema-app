@@ -1,1 +1,8 @@
-<p>welcome page</p>
+<div class="layout">
+  <app-movie-settings (onSettingsRedefine)="handleSettingsRedefinition($event)"></app-movie-settings>
+  <div *ngFor="let movie of movies | async">
+    <hr/>
+    <p>{{movie.title}}</p>
+    <p>{{movie.year}}</p>
+  </div>
+</div>
