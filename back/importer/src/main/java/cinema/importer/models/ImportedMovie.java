@@ -14,6 +14,6 @@ public class ImportedMovie {
   String imageUrl;
 
   String crew;
-  double imbDbRating;
+  double imDbRating;
   double imDbRatingCount;
 }

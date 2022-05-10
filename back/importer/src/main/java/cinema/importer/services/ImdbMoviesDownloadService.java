@@ -1,6 +1,6 @@
 package cinema.importer.services;
 
-import cinema.importer.exception.ImporterException;
+import cinema.importer.exceptions.ImporterException;
 import cinema.importer.models.ImportedMovie;
 import cinema.importer.models.ImportedMovies;
 import lombok.RequiredArgsConstructor;
