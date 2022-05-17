@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ScreeningsService } from '../../services/screenings.service';
 import * as moment from 'moment';
-import { Screening } from '../../models/screening';
+import { MovieWithScreenings } from '../../models/screening';
 
 @Component({
   selector: 'app-screenings',
@@ -9,15 +9,23 @@ import { Screening } from '../../models/screening';
   styleUrls: ['./app-screenings.component.scss'],
 })
 export class AppScreeningsComponent {
-  screenings: Screening[] = [];
+  moviesWithScreenings: MovieWithScreenings[] = [];
 
   constructor(private screeningService: ScreeningsService) {
-    screeningService
-      .getScreeningsByIsoDateString(moment().format('YYYY-MM-DD'))
-      .subscribe((screenings) => (this.screenings = screenings));
+    this.fetchMoviesByIsoDateString(moment().format('YYYY-MM-DD'));
   }
 
   handleScreeningDateChange(isoDateString: string): void {
-    console.log(isoDateString);
+    this.fetchMoviesByIsoDateString(isoDateString);
+  }
+
+  fetchMoviesByIsoDateString(isoDateString: string): void {
+    this.screeningService
+      .getScreeningsByIsoDateString(isoDateString)
+      .subscribe((moviesWithScreenings) => (this.moviesWithScreenings = moviesWithScreenings));
+  }
+
+  getOnlyHourAndMinutes(screening: MovieWithScreenings['screenings'][number]): string {
+    return moment(screening.beginning).format('H:mm');
   }
 }

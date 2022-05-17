@@ -1,7 +1,17 @@
 <div class="layout">
-  <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
-  <app-movie *ngFor="let screening of screenings" [movie]="screening.movie">
-    elo
-  </app-movie>
+  <div class="bar">
+    Select date:
+    <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
+  </div>
+  <div *ngFor="let movieWithScreenings of moviesWithScreenings">
+    <hr/>
+    <app-movie [movie]="movieWithScreenings.movie">
+      <div class="bar">
+      <span class="bar__pill" *ngFor="let screening of movieWithScreenings.screenings">
+        {{getOnlyHourAndMinutes(screening)}}
+      </span>
+      </div>
+    </app-movie>
+  </div>
 </div>
 

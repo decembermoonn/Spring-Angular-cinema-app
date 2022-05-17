@@ -11,3 +11,19 @@
     margin: 0;
   }
 }
+
+.bar {
+  display: flex;
+
+  .bar__pill {
+    padding: 0.1rem 0.6rem;
+    border-width: 3px;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+
+    &:hover {
+      background-color: #F1F5F9;
+      cursor: pointer;
+    }
+  }
+}

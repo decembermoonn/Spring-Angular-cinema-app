@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @RequiredArgsConstructor
 public class ScreeningWithMovieDto {
+  private final long id;
   private final Movie movie;
   private final LocalDateTime beginning;
 }

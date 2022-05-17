@@ -9,6 +9,11 @@
 
   .movie-container__text {
     flex: 1 0 70%;
+    padding-left: 0.4rem;
+
+    @media (max-width: 480px) {
+      padding-left: 0.2rem;
+    }
 
     .movie-container__text--title {
       font-weight: bold;
@@ -25,6 +30,10 @@
   .movie-container__ratings {
     text-align: right;
     flex: 1 0 30%;
+
+    @media (max-width: 480px) {
+      padding-right: 0.2rem;
+    }
 
     .movie-container__ratings--rating {
       font-size: 1.2rem;

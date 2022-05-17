@@ -32,6 +32,6 @@ public class ScreeningService {
   }
 
   private ScreeningWithMovieDto mapToScreeningWithMovieDto(Screening screening) {
-    return new ScreeningWithMovieDto(screening.getMovie(), screening.getBeginning());
+    return new ScreeningWithMovieDto(screening.getId(), screening.getMovie(), screening.getBeginning());
   }
 }
