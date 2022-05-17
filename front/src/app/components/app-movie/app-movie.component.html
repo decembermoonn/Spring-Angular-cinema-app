@@ -5,6 +5,7 @@
       <p class="movie-container__text--title">{{movie.title | uppercase}}</p>
       <p>{{movie.year}}</p>
       <p class="movie-container__text--crew">{{movie.crew}}</p>
+      <ng-content></ng-content>
     </div>
     <div class="movie-container__ratings">
       <p><span class="movie-container__ratings--rating">{{movie.imDbRating}}</span>/10</p>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from '../../../models/movie';
+import { Movie } from '../../models/movie';
 
 @Component({
   selector: 'app-movie',
@@ -8,8 +8,4 @@ import { Movie } from '../../../models/movie';
 })
 export class AppMovieComponent {
   @Input() movie!: Movie;
-
-  constructor() {
-
-  }
 }

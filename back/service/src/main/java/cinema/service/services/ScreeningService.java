@@ -23,6 +23,10 @@ public class ScreeningService {
     return mapToScreeningWithMovieDtos(screenings);
   }
 
+  public LocalDate getLastScreeningDate() {
+    return screeningRepository.findLastScreeningDate().toLocalDate();
+  }
+
   private List<ScreeningWithMovieDto> mapToScreeningWithMovieDtos(List<Screening> screenings) {
     return screenings.stream().map(this::mapToScreeningWithMovieDto).collect(Collectors.toList());
   }

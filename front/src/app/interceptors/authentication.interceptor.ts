@@ -8,7 +8,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   constructor(private authService: AuthenticationService) {}
 
   /**
-   * @summaty add authorization header with basic auth credentials if available
+   * @summary add authorization header with basic auth credentials if available
    * @param req
    * @param next
    */
@@ -17,7 +17,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     if (currentUser && currentUser.authData) {
       req = req.clone({
         setHeaders: {
-          Authentication: `Basic ${currentUser.authData}`,
+          Authorization: `Basic ${currentUser.authData}`,
         },
       });
     }

@@ -1,0 +1,7 @@
+<div class="layout">
+  <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
+  <app-movie *ngFor="let screening of screenings" [movie]="screening.movie">
+    elo
+  </app-movie>
+</div>
+

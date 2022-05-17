@@ -24,4 +24,10 @@ public class ScreeningController {
     List<ScreeningWithMovieDto> screenings = screeningService.getScreeningsOnDate(date);
     return ResponseEntity.ok(screenings);
   }
+
+  @GetMapping("/screenings/last")
+  public ResponseEntity<Object> getLastScreeningDate() {
+    LocalDate date = screeningService.getLastScreeningDate();
+    return ResponseEntity.ok(date);
+  }
 }
