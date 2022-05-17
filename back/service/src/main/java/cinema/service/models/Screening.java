@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Entity
+@Table(name = "Screenings")
 public class Screening {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,10 +20,8 @@ public class Screening {
   @ManyToOne
   Movie movie;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   Room room;
-
-  public int getDurationInMinutes() {
-      return movie.minutesLength + 5;
-  }
 }
+
+
