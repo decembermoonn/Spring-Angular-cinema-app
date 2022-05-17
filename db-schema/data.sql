@@ -1,0 +1,1 @@
+INSERT INTO Rooms(columns, rows) VALUES (6, 8), (8, 12), (10, 16)

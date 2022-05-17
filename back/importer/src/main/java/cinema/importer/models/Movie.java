@@ -17,6 +17,7 @@ public class Movie {
     long id;
     String title;
     int year;
+    int minutesLength;
     String imageUrl;
     String crew;
     double imDbRating;

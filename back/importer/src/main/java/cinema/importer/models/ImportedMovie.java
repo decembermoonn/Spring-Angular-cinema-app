@@ -15,5 +15,5 @@ public class ImportedMovie {
 
   String crew;
   double imDbRating;
-  double imDbRatingCount;
+  int imDbRatingCount;
 }

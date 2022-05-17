@@ -10,10 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Getter
 @Setter
-@Table(name="users")
+@Table(name = "users")
 public class User {
-    @Id
-    private String username;
-    private String password;
-    private boolean enabled;
+  @Id private String username;
+  private String password;
+  private boolean enabled;
 }

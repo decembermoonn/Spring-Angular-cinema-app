@@ -10,15 +10,17 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="Movies")
+@Table(name = "Movies")
 public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
-    String title;
-    int year;
-    String imageUrl;
-    String crew;
-    double imDbRating;
-    int imDbRatingCount;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  long id;
+
+  String title;
+  int year;
+  int minutesLength;
+  String imageUrl;
+  String crew;
+  double imDbRating;
+  int imDbRatingCount;
 }
