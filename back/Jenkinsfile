@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('back') {
-                    sh "gradle :service:deployHeroku --info"
+                    sh "gradle :service:deployHeroku --debug"
                 }
             }
         }
