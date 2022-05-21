@@ -23,6 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 dir('back') {
+                    sh "pwd"
+                    sh "ls"
                     sh "gradle :service:deployHeroku --debug"
                 }
             }
