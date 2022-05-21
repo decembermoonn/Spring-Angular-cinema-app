@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir('back') {
                     sh "mv ./service/build ../build"
-                    sh "gradle :service:deployHeroku --debug"
+                    sh "gradle :service:deployHeroku --stacktrace"
                 }
             }
         }
