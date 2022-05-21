@@ -8,17 +8,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "gradle :service:clean :service:build"
+                dir('back') {
+                  sh "gradle :service:clean :service:build"
+                }
             }
         }
         stage('Test') {
             steps {
-                sh "gradle :service:test"
+                dir('back') {
+                    sh "gradle :service:test"
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh "gradle :service:deployHeroku"
+                dir('back') {
+                    sh "gradle :service:deployHeroku"
+                }
             }
         }
     }
