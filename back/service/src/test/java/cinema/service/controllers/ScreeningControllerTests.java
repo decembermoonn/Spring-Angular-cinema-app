@@ -18,20 +18,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureMockMvc
 @WithMockUser
 public class ScreeningControllerTests {
+
+  @Autowired private MockMvc mvc;
+
   @Test
-  public void removeThisTest() {
-    assertEquals(2, 2);
+  public void shouldReturnValidDateIsoString() throws Exception {
+    MvcResult mvcResult =
+        this.mvc.perform(get("/screenings/last")).andExpect(status().isOk()).andReturn();
+
+    String content = mvcResult.getResponse().getContentAsString();
+    String cleanedDateText = content.replaceAll("\"", "");
+
+    assertDoesNotThrow(() -> LocalDate.parse(cleanedDateText));
   }
-//  @Autowired private MockMvc mvc;
-//
-//  @Test
-//  public void shouldReturnValidDateIsoString() throws Exception {
-//    MvcResult mvcResult =
-//        this.mvc.perform(get("/screenings/last")).andExpect(status().isOk()).andReturn();
-//
-//    String content = mvcResult.getResponse().getContentAsString();
-//    String cleanedDateText = content.replaceAll("\"", "");
-//
-//    assertDoesNotThrow(() -> LocalDate.parse(cleanedDateText));
-//  }
 }

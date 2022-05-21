@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Cinema
+    username: postgres
+    password: bartiq132
+  jpa:
+    show-sql: true
