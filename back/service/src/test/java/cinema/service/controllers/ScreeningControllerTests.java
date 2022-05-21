@@ -21,14 +21,14 @@ public class ScreeningControllerTests {
 
   @Autowired private MockMvc mvc;
 
-  @Test
-  public void shouldReturnValidDateIsoString() throws Exception {
-    MvcResult mvcResult =
-        this.mvc.perform(get("/screenings/last")).andExpect(status().isOk()).andReturn();
-
-    String content = mvcResult.getResponse().getContentAsString();
-    String cleanedDateText = content.replaceAll("\"", "");
-
-    assertDoesNotThrow(() -> LocalDate.parse(cleanedDateText));
-  }
+//  @Test
+//  public void shouldReturnValidDateIsoString() throws Exception {
+//    MvcResult mvcResult =
+//        this.mvc.perform(get("/screenings/last")).andExpect(status().isOk()).andReturn();
+//
+//    String content = mvcResult.getResponse().getContentAsString();
+//    String cleanedDateText = content.replaceAll("\"", "");
+//
+//    assertDoesNotThrow(() -> LocalDate.parse(cleanedDateText));
+//  }
 }
