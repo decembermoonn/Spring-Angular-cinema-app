@@ -1,5 +1,6 @@
 package cinema.service.models;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,9 +17,10 @@ public class Movie {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   long id;
 
-  String title;
+  @NotNull String title;
+  @NotNull int minutesLength;
+
   int year;
-  int minutesLength;
   String imageUrl;
   String crew;
   double imDbRating;

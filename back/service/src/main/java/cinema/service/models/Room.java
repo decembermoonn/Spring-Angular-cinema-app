@@ -1,5 +1,6 @@
 package cinema.service.models;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,12 +8,13 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name="Rooms")
+@Table(name = "Rooms")
 public class Room {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  private int rows;
-  private int columns;
+  @NotNull private int rows;
+
+  @NotNull private int columns;
 }

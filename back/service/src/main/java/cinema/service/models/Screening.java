@@ -1,5 +1,6 @@
 package cinema.service.models;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,13 +16,10 @@ public class Screening {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  LocalDateTime beginning;
+  @NotNull LocalDateTime beginning;
 
-  @ManyToOne
-  Movie movie;
+  @ManyToOne Movie movie;
 
   @ManyToOne(fetch = FetchType.LAZY)
   Room room;
 }
-
-
