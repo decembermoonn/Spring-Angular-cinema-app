@@ -45,7 +45,6 @@ CREATE TABLE reservations (
     CONSTRAINT fk_ticket FOREIGN KEY (ticket_id) REFERENCES tickets(id)
 );
 
-
 CREATE TABLE tickets (
     id SERIAL PRIMARY KEY,
     type VARCHAR(20) NOT NULL,
