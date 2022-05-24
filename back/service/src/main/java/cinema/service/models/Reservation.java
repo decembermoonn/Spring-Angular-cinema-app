@@ -22,6 +22,8 @@ public class Reservation {
 
   @NotNull private LocalDateTime expirationDate;
 
+  @NotNull private int reservationGroup;
+
   @ManyToOne(optional = false)
   private Screening screening;
 
