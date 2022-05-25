@@ -12,7 +12,7 @@ export class AuthenticationGuard implements CanActivate {
    * @param state
    */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authService.currentUser) return true;
+    if (this.authService.currentUserValue) return true;
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }

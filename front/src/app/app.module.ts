@@ -15,9 +15,10 @@ import { AppMovieSettingsComponent } from './components/app-welcome/app-movie-se
 import { AppMovieComponent } from './components/app-movie/app-movie.component';
 import { AppScreeningsComponent } from './components/app-screenings/app-screenings.component';
 import { AppScreeningsSettingsComponent } from './components/app-screenings/app-screenings-settings/app-screenings-settings.component';
+import { AppReservationComponent } from './components/app-reservation/app-reservation.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent],
+  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent, AppReservationComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
   bootstrap: [AppComponent],

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLoginComponent } from './components/app-login/app-login.component';
 import { AppWelcomeComponent } from './components/app-welcome/app-welcome.component';
 import { AppScreeningsComponent } from './components/app-screenings/app-screenings.component';
+import { AppReservationComponent } from './components/app-reservation/app-reservation.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +14,11 @@ const routes: Routes = [
   {
     path: 'screenings',
     component: AppScreeningsComponent,
+  },
+  {
+    path: 'reservation',
+    component: AppReservationComponent,
+    canActivate: [AuthenticationGuard],
   },
   {
     path: '**',

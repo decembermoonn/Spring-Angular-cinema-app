@@ -21,9 +21,13 @@
     border-radius: 3px;
     background-color: #FFFFFF;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #F1F5F9;
       cursor: pointer;
+    }
+
+    &:disabled {
+      background-color: #EEEEEE;
     }
   }
 }

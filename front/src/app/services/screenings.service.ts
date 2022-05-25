@@ -38,7 +38,7 @@ export class ScreeningsService {
     screeningsFromApi.forEach((screening) => {
       const entry = movieWithScreenings.find((entry) => entry.movie.title === screening.movie.title);
       if (entry) {
-        entry.screenings.push({
+        entry.screenings.unshift({
           id: screening.id,
           beginning: screening.beginning,
         });

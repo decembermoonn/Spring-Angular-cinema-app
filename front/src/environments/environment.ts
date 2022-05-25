@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  cinemaApiUrl: 'http://localhost:8080'
+  cinemaApiUrl: 'http://localhost:8081'
 };
 
 /*
