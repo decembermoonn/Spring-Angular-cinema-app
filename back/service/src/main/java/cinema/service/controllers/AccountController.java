@@ -1,6 +1,6 @@
 package cinema.service.controllers;
 
-import cinema.service.controllers.dtos.Credentials;
+import cinema.service.models.dtos.Credentials;
 import cinema.service.repositories.AccountRepository;
 import cinema.service.models.User;
 import lombok.RequiredArgsConstructor;

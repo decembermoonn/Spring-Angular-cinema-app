@@ -1,4 +1,4 @@
-package cinema.service.models.dto;
+package cinema.service.models.dtos;
 
 import cinema.service.models.Movie;
 import lombok.Getter;

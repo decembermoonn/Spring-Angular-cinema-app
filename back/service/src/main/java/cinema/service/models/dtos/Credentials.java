@@ -1,7 +1,6 @@
-package cinema.service.controllers.dtos;
+package cinema.service.models.dtos;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter

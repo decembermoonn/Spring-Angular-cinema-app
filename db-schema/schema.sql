@@ -38,10 +38,10 @@ CREATE TABLE reservations (
     reservation_group INT NOT NULL,
     expiration_date TIMESTAMP WITHOUT TIME ZONE,
     screening_id SERIAL,
-    user_id VARCHAR(50),
+    user_username VARCHAR(50),
     ticket_id SERIAL,
     CONSTRAINT fk_screening FOREIGN KEY (screening_id) REFERENCES screenings(id),
-    CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(username),
+    CONSTRAINT fk_user FOREIGN KEY (user_username) REFERENCES users(username),
     CONSTRAINT fk_ticket FOREIGN KEY (ticket_id) REFERENCES tickets(id)
 );
 

@@ -1,9 +1,8 @@
 package cinema.service.controllers;
 
-import cinema.service.models.Reservation;
-import cinema.service.repositories.ReservationRepository;
+import cinema.service.models.dtos.ReservedSeatDto;
+import cinema.service.services.ReservationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,11 +14,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ReservationController {
-    private final ReservationRepository reservationRepository;
+    private final ReservationService reservationService;
 
     @GetMapping("/reservations")
-    public List<Reservation> getReservationsByScreening(@RequestParam long screeningId){
-        return reservationRepository.findAllByScreeningId(screeningId);
+    public List<ReservedSeatDto> getReservedSeatsByScreening(@RequestParam long screeningId){
+        return reservationService.getReservedSeatsByScreening(screeningId);
     }
 
 }

@@ -13,10 +13,10 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class TicketController {
-    private final TicketRepository ticketRepository;
+  private final TicketRepository ticketRepository;
 
-    @GetMapping("/tickets")
-    public List<Ticket> getTicketTypes() {
-        return ticketRepository.findAll();
-    }
+  @GetMapping("/tickets")
+  public List<Ticket> getTicketTypes() {
+    return ticketRepository.findAll();
+  }
 }

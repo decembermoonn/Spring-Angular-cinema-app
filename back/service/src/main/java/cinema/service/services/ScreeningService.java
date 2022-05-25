@@ -1,7 +1,7 @@
 package cinema.service.services;
 
 import cinema.service.models.Screening;
-import cinema.service.models.dto.ScreeningWithMovieDto;
+import cinema.service.models.dtos.ScreeningWithMovieDto;
 import cinema.service.repositories.ScreeningRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
