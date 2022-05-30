@@ -1,4 +1,7 @@
 <div class="layout">
-  balbalball
+  <app-seat-panel #panel *ngIf="seatPanelInput" [seatInfo]="seatPanelInput" (actualReservationCount)="setActualReservationCount($event)">
+
+  </app-seat-panel>
+  <button (click)="test()">teeeeeeeeeest</button>
 </div>
 

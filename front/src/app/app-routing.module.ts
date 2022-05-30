@@ -16,7 +16,7 @@ const routes: Routes = [
     component: AppScreeningsComponent,
   },
   {
-    path: 'reservation',
+    path: 'reservation/:id',
     component: AppReservationComponent,
     canActivate: [AuthenticationGuard],
   },

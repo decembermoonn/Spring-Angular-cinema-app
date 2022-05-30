@@ -43,6 +43,11 @@ export class AppScreeningsComponent {
     const movieForSelectedScreening = this.moviesWithScreenings.find((movieWithScreening) =>
       movieWithScreening.screenings.some((screening) => screening.id === screeningId)
     )?.movie;
-    this.router.navigate(['reservation'], { state: { movieForSelectedScreening, screeningBeginningIsoString } });
+    this.router.navigate(['reservation', screeningId], {
+      state: {
+        movieForSelectedScreening,
+        screeningBeginningIsoString,
+      },
+    });
   }
 }
