@@ -5,6 +5,7 @@ import {forkJoin, map, Observable} from 'rxjs';
 import { Reservation } from '../models/reservation';
 import { RoomInfo } from '../models/room-info';
 import {SeatPanelInput} from "../models/seat-panel-input";
+import {Ticket} from "../models/ticket";
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
@@ -14,8 +15,8 @@ export class ReservationService {
     this.cinemaApiUrl = environment.cinemaApiUrl;
   }
 
-  getTicketTypes(): Observable<string[]> {
-    return this.http.get(`${this.cinemaApiUrl}/tickets`) as Observable<string[]>;
+  getTicketTypes(): Observable<Ticket[]> {
+    return this.http.get(`${this.cinemaApiUrl}/tickets`) as Observable<Ticket[]>;
   }
 
   getReservationsForScreening(screeningId: number): Observable<Reservation[]> {

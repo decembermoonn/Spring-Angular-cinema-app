@@ -11,3 +11,28 @@
     margin: 0;
   }
 }
+
+.form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-message {
+  color: red;
+}
+
+.bar__pill {
+  padding: 0.1rem 0.6rem;
+  border-width: 3px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+
+  &:hover:not(:disabled) {
+    background-color: #F1F5F9;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: #EEEEEE;
+  }
+}
