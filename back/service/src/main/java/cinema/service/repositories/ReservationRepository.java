@@ -14,4 +14,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
   @Query("select max(r.reservationGroup) from Reservation r")
   Optional<Integer> getMaxReservationGroup();
+
+  @Query("select r from Reservation r join fetch r.screening as s join fetch s.movie where r.user.username = :username")
+  List<Reservation> getJoinedReservationsForUser(String username);
+
+  void deleteAllByReservationGroup(int reservationGroup);
 }

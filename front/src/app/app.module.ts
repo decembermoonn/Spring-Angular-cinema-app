@@ -18,9 +18,11 @@ import { AppScreeningsSettingsComponent } from './components/app-screenings/app-
 import { AppReservationComponent } from './components/app-reservation/app-reservation.component';
 import { AppSeatPanelComponent } from './components/app-reservation/app-seat-panel/app-seat-panel.component';
 import { AppArrayRangePipe } from './pipes/app-array-range.pipe';
+import { AppUserReservationPanelComponent } from './components/app-user-reservation-panel/app-user-reservation-panel.component';
+import { AppUserReservationComponent } from './components/app-user-reservation-panel/app-user-reservation/app-user-reservation.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent, AppReservationComponent, AppSeatPanelComponent, AppArrayRangePipe],
+  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent, AppReservationComponent, AppSeatPanelComponent, AppArrayRangePipe, AppUserReservationPanelComponent, AppUserReservationComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
   bootstrap: [AppComponent],

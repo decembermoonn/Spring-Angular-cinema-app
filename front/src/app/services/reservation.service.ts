@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
-import {forkJoin, map, Observable} from 'rxjs';
-import { Reservation } from '../models/reservation';
+import { forkJoin, map, Observable } from 'rxjs';
+import { Reservation, ReservationWithDetailsForPanel } from '../models/reservation';
 import { RoomInfo } from '../models/room-info';
-import {SeatPanelInput} from "../models/seat-panel-input";
-import {Ticket} from "../models/ticket";
+import { SeatPanelInput } from '../models/seat-panel-input';
+import { Ticket } from '../models/ticket';
 
 @Injectable({ providedIn: 'root' })
 export class ReservationService {
@@ -20,7 +20,7 @@ export class ReservationService {
   }
 
   getReservationsForScreening(screeningId: number): Observable<Reservation[]> {
-    return this.http.get(`${this.cinemaApiUrl}/reservations`, {
+    return this.http.get(`${this.cinemaApiUrl}/reservations/seats`, {
       params: {
         screeningId,
       },
@@ -36,10 +36,7 @@ export class ReservationService {
   }
 
   getDataForSeatPanel(screeningId: number): Observable<SeatPanelInput> {
-    return forkJoin([
-      this.getRoomInfoForScreening(screeningId),
-      this.getReservationsForScreening(screeningId),
-    ]).pipe(
+    return forkJoin([this.getRoomInfoForScreening(screeningId), this.getReservationsForScreening(screeningId)]).pipe(
       map((data) => {
         return {
           roomInfo: data[0] as RoomInfo,
@@ -47,5 +44,13 @@ export class ReservationService {
         };
       })
     );
+  }
+
+  getReservationsForAuthenticatedUser(): Observable<ReservationWithDetailsForPanel[]> {
+    return this.http.get(`${this.cinemaApiUrl}/reservations`, {}) as Observable<ReservationWithDetailsForPanel[]>;
+  }
+
+  deleteReservationByGroupId(groupId: number): Observable<unknown> {
+    return this.http.delete(`${this.cinemaApiUrl}/reservation/${groupId}`, {}) as Observable<unknown>;
   }
 }

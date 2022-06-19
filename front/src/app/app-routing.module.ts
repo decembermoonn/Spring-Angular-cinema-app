@@ -5,6 +5,9 @@ import { AppWelcomeComponent } from './components/app-welcome/app-welcome.compon
 import { AppScreeningsComponent } from './components/app-screenings/app-screenings.component';
 import { AppReservationComponent } from './components/app-reservation/app-reservation.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import {
+  AppUserReservationPanelComponent
+} from "./components/app-user-reservation-panel/app-user-reservation-panel.component";
 
 const routes: Routes = [
   {
@@ -18,6 +21,11 @@ const routes: Routes = [
   {
     path: 'reservation/:id',
     component: AppReservationComponent,
+    canActivate: [AuthenticationGuard],
+  },
+  {
+    path: 'reservations',
+    component: AppUserReservationPanelComponent,
     canActivate: [AuthenticationGuard],
   },
   {

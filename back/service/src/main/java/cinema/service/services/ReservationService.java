@@ -1,10 +1,12 @@
 package cinema.service.services;
 
+import cinema.service.converters.ReservationListToReservedSeatDtoList;
 import cinema.service.models.Reservation;
 import cinema.service.models.Screening;
 import cinema.service.models.Ticket;
 import cinema.service.models.User;
 import cinema.service.models.dtos.ReservationDataDto;
+import cinema.service.models.dtos.ReservationWithDetailsForUserDto;
 import cinema.service.models.dtos.ReservedSeatDto;
 import cinema.service.repositories.AccountRepository;
 import cinema.service.repositories.ReservationRepository;
@@ -12,14 +14,17 @@ import cinema.service.repositories.ScreeningRepository;
 import cinema.service.repositories.TicketRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Service
 @Slf4j
@@ -115,5 +120,26 @@ public class ReservationService {
   private LocalDateTime getMinimumDate(LocalDateTime beginning, LocalDateTime nowPlusSomeHours) {
     if (beginning.isBefore(nowPlusSomeHours)) return beginning;
     return nowPlusSomeHours;
+  }
+
+  public List<ReservationWithDetailsForUserDto> getReservationsForUser(String username) {
+    List<Reservation> reservations = reservationRepository.getJoinedReservationsForUser(username);
+    var map = reservations.stream().collect(Collectors.groupingBy((Reservation::getReservationGroup)));
+    return map.entrySet().stream().map(e -> {
+      ReservationWithDetailsForUserDto newRes = new ReservationWithDetailsForUserDto();
+      Reservation pattern = e.getValue().get(0);
+      newRes.setBeginning(pattern.getScreening().getBeginning());
+      newRes.setImageUrl(pattern.getScreening().getMovie().getImageUrl());
+      newRes.setReservationGroup(e.getKey());
+      newRes.setTitle(pattern.getScreening().getMovie().getTitle());
+      newRes.setReservedSeatDtoList(ReservationListToReservedSeatDtoList.convert(e.getValue()));
+      return newRes;
+    }).collect(Collectors.toList());
+  }
+
+  @Transactional
+  public ResponseEntity<Void> deleteReservationByGroupId(int groupId) {
+    reservationRepository.deleteAllByReservationGroup(groupId);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 }
