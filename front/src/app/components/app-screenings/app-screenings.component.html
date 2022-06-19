@@ -1,8 +1,5 @@
 <div class="layout">
-  <div class="bar">
-    Select date:
-    <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
-  </div>
+  <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
   <div *ngFor="let movieWithScreenings of moviesWithScreenings">
     <hr/>
     <app-movie [movie]="movieWithScreenings.movie">

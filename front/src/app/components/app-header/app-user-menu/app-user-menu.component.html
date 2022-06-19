@@ -3,14 +3,16 @@
   class="row px-4 bg-slate-50 flex flex-col justify-end items-end"
 >
   <ng-container *ngIf="localUser; else guestUser">
-    <div class="flex py-1">
+    <div class="d-flex flex-row-reverse py-1 gap-4">
       <span class="row__button font-bold text-slate-600" (click)="logout()">Logout</span>
+      <span class="row__button font-bold text-slate-600" (click)="redirectToScreenings()">Screenings</span>
     </div>
   </ng-container>
 </nav>
 
 <ng-template #guestUser>
-  <div class="flex py-1">
+  <div class="d-flex flex-row-reverse py-1 gap-4">
     <span class="row__button font-bold text-slate-600" (click)="redirectToLoginPage()">Login</span>
+    <span class="row__button font-bold text-slate-600" (click)="redirectToRegisterPage()">Register</span>
   </div>
 </ng-template>

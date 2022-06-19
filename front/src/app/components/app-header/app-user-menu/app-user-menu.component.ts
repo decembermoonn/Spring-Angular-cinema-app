@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { OptionalUser } from '../../../models/user';
+import {AuthenticationService} from "../../../services/authentication.service";
 
 @Component({
   selector: 'app-user-menu',
@@ -13,7 +14,7 @@ export class AppUserMenuComponent {
 
   @Output() visibilityChange = new EventEmitter<boolean>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private auth: AuthenticationService) {}
 
   redirectToLoginPage(): void {
     this.isRowExapnded = false;
@@ -22,6 +23,14 @@ export class AppUserMenuComponent {
   }
 
   logout(): void {
-    console.warn("logout placeholder")
+    this.auth.logout();
+  }
+
+  redirectToScreenings(): void {
+    this.router.navigate(['screenings']);
+  }
+
+  redirectToRegisterPage(): void {
+    this.router.navigate(['register']);
   }
 }
