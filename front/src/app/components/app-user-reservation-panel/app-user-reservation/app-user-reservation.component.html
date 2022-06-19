@@ -1,0 +1,21 @@
+<div class="card-body container">
+  <div class="row">
+    <div class="col-9 col-md-10">
+      <p class="card-title font-bold">{{reservation.title}}</p>
+      <p class="card-title">{{reservation.beginning | date:'short' }}</p>
+      <p>
+        Reserved seats [row, col]:
+        <span class="d-block small" *ngFor="let seat of reservation.reservedSeatDtoList">
+              column {{seat.columnNumber}} row {{seat.rowNumber}}
+            </span>
+      </p>
+    </div>
+    <div class="col-3 col-md-2">
+      <img class="card-img" [src]="reservation.imageUrl">
+    </div>
+  </div>
+</div>
+<div class="card-footer">
+  <button (click)="tryCancelReservation(reservation.reservationGroup)"
+          class="btn btn-danger">{{userAskedToConfirm ? 'You sure? (YES)' : 'Cancel reservation'}}</button>
+</div>

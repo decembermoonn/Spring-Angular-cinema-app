@@ -1,0 +1,7 @@
+<div class="layout">
+  <div *ngIf="!reservationData.length">Your reservation list is empty</div>
+  <div *ngFor="let reservation of reservationData" class="card">
+    <app-user-reservation (change)="refreshPanel()" [reservation]="reservation"></app-user-reservation>
+  </div>
+</div>
+
