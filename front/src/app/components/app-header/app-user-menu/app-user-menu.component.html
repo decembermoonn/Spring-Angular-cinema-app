@@ -13,6 +13,6 @@
 </nav>
 
 <ng-template #guestUser>
-  <span class="row__button fw-bold" (click)="redirectToLoginPage()">Login</span>
+  <span class="row__button fw-bold" [routerLink]="'login'">Login</span>
   <span class="row__button fw-bold" [routerLink]="'register'">Register</span>
 </ng-template>

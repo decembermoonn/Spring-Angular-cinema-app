@@ -1,6 +1,7 @@
 package cinema.service.controllers;
 
 import cinema.service.models.Movie;
+import cinema.service.models.dtos.MovieListWithMetadataDto;
 import cinema.service.services.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -30,7 +31,7 @@ public class MovieController {
       String sortProperty,
       String query,
       @RequestParam(required = false, defaultValue = "0") int page) {
-    List<Movie> movieList = movieService.getMovies(direction, sortProperty, query, page);
+    MovieListWithMetadataDto movieList = movieService.getMovies(direction, sortProperty, query, page);
     return ResponseEntity.ok(movieList);
   }
 }

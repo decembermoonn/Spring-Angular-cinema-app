@@ -7,6 +7,11 @@ export interface Movie {
   imDbRatingCount: number;
 }
 
+export interface MoviesWithMetadata {
+  movieList: Movie[];
+  totalPages: number;
+}
+
 export type MovieSort = 'a-z'|'z-a'|'ratingAsc'|'ratingDesc';
 
 export interface MovieRequestData {

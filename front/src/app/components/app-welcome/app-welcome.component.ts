@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import { Observable } from 'rxjs';
-import { Movie, MovieRequestData } from '../../models/movie';
+import {Movie, MovieRequestData } from '../../models/movie';
 
 @Component({
   selector: 'app-welcome',
@@ -9,17 +8,21 @@ import { Movie, MovieRequestData } from '../../models/movie';
   styleUrls: ['./app-welcome.component.scss'],
 })
 export class AppWelcomeComponent implements OnInit {
-  movies: Observable<Movie[]>;
+  movies: Movie[] = [];
+  totalPages = 0;
   moviesRequestData: MovieRequestData = {
     page: 0,
   };
 
   constructor(private movieService: MoviesService) {
-    this.movies = movieService.currentMovies;
+    movieService.currentMovies.subscribe((val) => {
+      this.movies = val.movieList;
+      this.totalPages = val.totalPages;
+    });
   }
 
   ngOnInit(): void {
-    if (!this.movieService.currentMoviesValue.length) {
+    if (!this.movieService.currentMoviesValue.movieList.length) {
       this.requestMovies();
     }
   }
@@ -31,18 +34,12 @@ export class AppWelcomeComponent implements OnInit {
     this.requestMovies();
   }
 
-  getNextPage(): void {
-    this.moviesRequestData.page += 1;
-    this.requestMovies();
-  }
-
-  getPrevPage(): void {
-    if(this.moviesRequestData.page == 0) return;
-    this.moviesRequestData.page -=1;
-    this.requestMovies();
-  }
-
   requestMovies(): void {
-    this.movieService.getMovies(this.moviesRequestData).subscribe(() => scrollTo(0, 0));
+    this.movieService.getMovies(this.moviesRequestData).subscribe();
+  }
+
+  handlePageChange(page: number): void {
+    this.moviesRequestData.page = page;
+    this.requestMovies();
   }
 }

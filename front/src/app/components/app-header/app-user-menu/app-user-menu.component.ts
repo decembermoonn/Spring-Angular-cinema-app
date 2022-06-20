@@ -16,11 +16,11 @@ export class AppUserMenuComponent {
 
   constructor(private router: Router, private auth: AuthenticationService) {}
 
-  redirectToLoginPage(): void {
-    this.isRowExapnded = false;
-    this.visibilityChange.next(false);
-    this.router.navigate(['login']);
-  }
+  // redirectToLoginPage(): void {
+  //   this.isRowExapnded = false;
+  //   this.visibilityChange.next(false);
+  //   this.router.navigate(['login']);
+  // }
 
   logout(): void {
     this.auth.logout();
