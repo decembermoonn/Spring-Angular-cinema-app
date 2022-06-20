@@ -1,18 +1,14 @@
 <div class="row">
-  <div>
-    <label>Choose sorting order
-      <select name="cars" [formControl]="movieSort">
+  <div class="col-12 col-sm-6">
+      <select class="form-control" name="options" [formControl]="movieSort">
         <option value="a-z">By title (A-Z)</option>
         <option value="z-a">By title (Z-A)</option>
         <option value="ratingAsc">By rating (ascending)</option>
         <option value="ratingDesc">By rating (descending)</option>
         <option value="" [selected]="true">None</option>
       </select>
-    </label>
   </div>
-  <div>
-    <label> Search by:
-      <input type="text" name="query" placeholder="Query text" [formControl]="movieQuery">
-    </label>
+  <div class="col-12 col-sm-6">
+    <input class="form-control" type="text" name="query" placeholder="Search by query" [formControl]="movieQuery">
   </div>
 </div>

@@ -1,13 +1,16 @@
-<div class="w-1/2 bg-white text-center my-8 mx-auto pb-8 border-2 rounded-lg">
-  <h1 class="text-2xl text-slate-600 font-bold py-8">Sign In</h1>
-  <form class="px-16 lg:px-32 xl:px-48 flex flex-col" [formGroup]="signUpForm" (ngSubmit)="onFormSubmission()">
-    <input class="h-8 my-2 border-2 rounded text-center" formControlName="login"
-           type="text" name="login" placeholder="Login">
-    <input class="h-8 my-2 border-2 rounded text-center" formControlName="password"
-           type="password" name="password" placeholder="Password">
+<form class="row justify-content-center" [formGroup]="signUpForm" (ngSubmit)="onFormSubmission()">
+  <div class="form-group col-10 col-sm-8 col-md-6 col-lg-4">
+
+    <label class="d-block">Username
+      <input formControlName="login" type="text" class="form-control" placeholder="Enter username">
+    </label>
+
+    <label class="d-block">Password
+      <input formControlName="password" type="password" class="form-control" placeholder="Enter password">
+    </label>
+
     <p *ngIf="showError" class="text-xs text-red-600">Invalid username or password</p>
-    <input class="sign-in h-16 my-2 border-2 rounded text-center text-slate-600 font-bold bg-slate-100"
-           [ngClass]="{'sign-in--disabled': isButtonDisabled()}" type="submit" value="Sign In"
-           [disabled]="isButtonDisabled()">
-  </form>
-</div>
+
+    <button [disabled]="isButtonDisabled()" type="submit" class="w-100 btn btn-primary mt-4">Sign In</button>
+  </div>
+</form>

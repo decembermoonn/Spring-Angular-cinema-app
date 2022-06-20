@@ -12,9 +12,12 @@
 }
 
 .row {
+  border-color: #7e83af !important;
+  background-color: #c6d4ff;
   overflow: hidden;
 
   .row__button {
     cursor: pointer;
+    color: #475569;
   }
 }

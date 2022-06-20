@@ -1,12 +1,12 @@
-<nav class="h-12 px-4 bg-slate-100 border-b-2 flex flex-row-reverse items-center">
+<nav class="navbar px-4 border-bottom d-flex flex-row-reverse justify-content-start align-items-center">
   <div class="navbar__item">
-    <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">More</span>
+    <span class="navbar__button d-none d-md-inline pr-2 fw-bolder">More</span>
     <fa-icon class="navbar__button" [icon]="faBars" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
   </div>
   <div class="navbar__item" (click)="expandUserMenu()">
     <ng-container *ngIf="localUser; else templateForGuests">
-      <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">{{localUser.username}}</span>
-      <img class="navbar__button navbar__avatar border" alt="Avatar" src="/assets/avatar.jpg" width="40" height="40">
+      <span class="navbar__button d-none d-md-inline pr-2 fw-bolder">{{localUser.username}}</span>
+      <img class="navbar__avatar rounded-circle" alt="Avatar" src="/assets/avatar.jpg" width="40" height="40">
     </ng-container>
   </div>
 </nav>
@@ -14,7 +14,7 @@
                (visibilityChange)="changeVisibility($event)"></app-user-menu>
 
 <ng-template #templateForGuests>
-  <span class="navbar__button hidden md:inline pr-2 font-bold text-slate-600">Account</span>
+  <span class="navbar__button d-none d-md-inline pr-2 fw-bolder">Account</span>
   <fa-icon class="navbar__button" [icon]="faUser" [styles]="{'color': '#475569'}" size="lg"></fa-icon>
 </ng-template>
 

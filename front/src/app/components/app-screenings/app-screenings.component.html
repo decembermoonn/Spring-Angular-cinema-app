@@ -1,7 +1,7 @@
 <div class="layout">
   <app-screenings-settings (onScreeningDateChange)="handleScreeningDateChange($event)"></app-screenings-settings>
   <div *ngFor="let movieWithScreenings of moviesWithScreenings">
-    <hr/>
+    <hr class="m-0"/>
     <app-movie [movie]="movieWithScreenings.movie">
       <div class="bar">
         <button class="bar__pill" *ngFor="let screening of movieWithScreenings.screenings" [disabled]="isGuest()"

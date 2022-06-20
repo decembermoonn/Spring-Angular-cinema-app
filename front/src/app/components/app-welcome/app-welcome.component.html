@@ -2,7 +2,7 @@
   <app-movie-settings (onSettingsRedefine)="handleSettingsRedefinition($event)"></app-movie-settings>
   <div class="movies">
     <section class="movies__movie" *ngFor="let movie of movies | async">
-      <hr/>
+      <hr class="m-0"/>
       <app-movie [movie]="movie"></app-movie>
     </section>
   </div>

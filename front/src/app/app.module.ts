@@ -20,9 +20,10 @@ import { AppSeatPanelComponent } from './components/app-reservation/app-seat-pan
 import { AppArrayRangePipe } from './pipes/app-array-range.pipe';
 import { AppUserReservationPanelComponent } from './components/app-user-reservation-panel/app-user-reservation-panel.component';
 import { AppUserReservationComponent } from './components/app-user-reservation-panel/app-user-reservation/app-user-reservation.component';
+import { AppRegistrationComponent } from './components/app-registration/app-registration.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent, AppReservationComponent, AppSeatPanelComponent, AppArrayRangePipe, AppUserReservationPanelComponent, AppUserReservationComponent],
+  declarations: [AppComponent, AppHeaderComponent, AppUserMenuComponent, AppLoginComponent, AppWelcomeComponent, AppMovieSettingsComponent, AppMovieComponent, AppScreeningsComponent, AppScreeningsSettingsComponent, AppReservationComponent, AppSeatPanelComponent, AppArrayRangePipe, AppUserReservationPanelComponent, AppUserReservationComponent, AppRegistrationComponent],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule, ReactiveFormsModule, HttpClientModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }],
   bootstrap: [AppComponent],

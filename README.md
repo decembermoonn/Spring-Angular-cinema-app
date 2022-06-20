@@ -17,4 +17,4 @@ IntelliJ IDEA Ultimate was used to develop whole application.
 ### Stack:
 - TypeScript
 - Angular
-- Tailwind
+- <strike>Tailwind</strike> Bootstrap

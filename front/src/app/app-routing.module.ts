@@ -8,11 +8,16 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import {
   AppUserReservationPanelComponent
 } from "./components/app-user-reservation-panel/app-user-reservation-panel.component";
+import {AppRegistrationComponent} from "./components/app-registration/app-registration.component";
 
 const routes: Routes = [
   {
     path: 'login',
     component: AppLoginComponent,
+  },
+  {
+    path: 'register',
+    component: AppRegistrationComponent
   },
   {
     path: 'screenings',

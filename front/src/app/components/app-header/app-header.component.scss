@@ -3,10 +3,15 @@
 }
 
 .navbar__button {
+  padding-left: 0.4rem;
   cursor: pointer;
 }
 
 .navbar__avatar {
-  display: inline;
-  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navbar {
+  border-color: #7e83af !important;
+  background-color: #bbc8ff;
 }

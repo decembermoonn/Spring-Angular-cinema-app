@@ -1,18 +1,16 @@
 <nav
   [ngClass]="{'row--hidden border-b-0': !isRowExapnded, 'border-b-2 row--visible': isRowExapnded}"
-  class="row px-4 bg-slate-50 flex flex-col justify-end items-end"
+  class="row px-4 d-flex border"
 >
-  <ng-container *ngIf="localUser; else guestUser">
-    <div class="d-flex flex-row-reverse py-1 gap-4">
-      <span class="row__button font-bold text-slate-600" (click)="logout()">Logout</span>
-      <span class="row__button font-bold text-slate-600" (click)="redirectToScreenings()">Screenings</span>
-    </div>
-  </ng-container>
+  <div class="d-flex flex-row-reverse py-1 gap-4">
+    <ng-container *ngIf="localUser; else guestUser">
+      <span class="row__button fw-bold" (click)="logout()">Logout</span>
+    </ng-container>
+    <span class="row__button fw-bold" (click)="redirectToScreenings()">Screenings</span>
+  </div>
 </nav>
 
 <ng-template #guestUser>
-  <div class="d-flex flex-row-reverse py-1 gap-4">
-    <span class="row__button font-bold text-slate-600" (click)="redirectToLoginPage()">Login</span>
-    <span class="row__button font-bold text-slate-600" (click)="redirectToRegisterPage()">Register</span>
-  </div>
+  <span class="row__button fw-bold" (click)="redirectToLoginPage()">Login</span>
+  <span class="row__button fw-bold" (click)="redirectToRegisterPage()">Register</span>
 </ng-template>
