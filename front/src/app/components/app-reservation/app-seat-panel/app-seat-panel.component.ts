@@ -63,7 +63,7 @@ export class AppSeatPanelComponent {
   private createSeatsMapFromReservedSeats(reservations: Reservation[]): void {
     const newSeatMap = new Array(this.roomInfo.rows).fill([]).map(() => new Array(this.roomInfo.columns).fill('e'));
     reservations.forEach((reservation) => {
-      newSeatMap[reservation.rowNumber][reservation.columnNumber] = 'r';
+      newSeatMap[reservation.rowNumber-1][reservation.columnNumber-1] = 'r';
     });
     this.seatsMap = newSeatMap;
   }

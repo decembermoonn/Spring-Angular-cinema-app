@@ -5,6 +5,7 @@
   <div class="d-flex flex-row-reverse py-1 gap-4">
     <ng-container *ngIf="localUser; else guestUser">
       <span class="row__button fw-bold" (click)="logout()">Logout</span>
+      <span class="row__button fw-bold" [routerLink]="'reservations'">My reservations</span>
     </ng-container>
     <span class="row__button fw-bold" [routerLink]="'screenings'">Screenings</span>
     <span class="row__button fw-bold" [routerLink]="'movies'">Movies</span>
