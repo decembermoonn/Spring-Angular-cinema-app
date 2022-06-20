@@ -51,6 +51,10 @@ export class ReservationService {
   }
 
   deleteReservationByGroupId(groupId: number): Observable<unknown> {
-    return this.http.delete(`${this.cinemaApiUrl}/reservation/${groupId}`, {}) as Observable<unknown>;
+    return this.http.delete(`${this.cinemaApiUrl}/reservation/${groupId}`, {});
+  }
+
+  postReservation(data: Record<string, unknown>): Observable<unknown> {
+    return this.http.post(`${this.cinemaApiUrl}/reservation`, data, {});
   }
 }

@@ -9,7 +9,7 @@
       <input formControlName="password" type="password" class="form-control" placeholder="Enter password">
     </label>
 
-    <p *ngIf="showError" class="text-xs text-red-600">Invalid username or password</p>
+    <p *ngIf="showError" class="small error">Invalid username or password</p>
 
     <button [disabled]="isButtonDisabled()" type="submit" class="w-100 btn btn-primary mt-4">Sign In</button>
   </div>

@@ -32,6 +32,7 @@ public class ReservationController {
       @RequestBody @Valid ReservationDataDto reservationDataDto,
       BindingResult bindingResult,
       Principal principal) {
+    log.warn(reservationDataDto.toString());
     if (bindingResult.hasErrors()) {
       List<String> errMessages = bindingResult.getAllErrors().stream().map(e -> e.getDefaultMessage()).toList();
       return ResponseEntity.badRequest().body(errMessages);

@@ -45,7 +45,11 @@ export class AppSeatPanelComponent {
   }
 
   getCheckedSeatsAsReservations(): Reservation[] {
-    return [{rowNumber: 0, columnNumber: 0}];
+    const arr: Reservation[] = [];
+    this.seatsMap.forEach((row, rowIndex) => row.forEach((col, colIndex) => {
+      if(col === 'c') arr.push({rowNumber:rowIndex + 1, columnNumber:colIndex + 1});
+    }));
+    return arr;
   }
 
   isSeatChecked(row: number, col: number): boolean {

@@ -25,12 +25,4 @@ export class AppUserMenuComponent {
   logout(): void {
     this.auth.logout();
   }
-
-  redirectToScreenings(): void {
-    this.router.navigate(['screenings']);
-  }
-
-  redirectToRegisterPage(): void {
-    this.router.navigate(['register']);
-  }
 }

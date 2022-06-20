@@ -1,13 +1,12 @@
-<div class="plane">
-  <ol class="cabin">
-    <li *ngFor="let row of (roomInfo.rows | appArrayRange)">
-      <ol class="seats">
-        <li class="seat" [ngStyle]="{'flex': '0 0 ' + 100/roomInfo.columns  + '%'}" *ngFor="let col of (roomInfo.columns | appArrayRange)">
-          <input class="test" (click)="executeSeatAction(row, col)" type="checkbox" [disabled]="isSeatReserved(row,col)"
-                 [checked]="isSeatChecked(row,col)" [id]="row+'_'+col"/>
-          <label [for]="row+'_'+col">{{col}}</label>
-        </li>
-      </ol>
-    </li>
-  </ol>
-</div>
+<ol class="cabin">
+  <div class="cinema-screen"></div>
+  <li *ngFor="let row of (roomInfo.rows | appArrayRange)">
+    <ol class="seats">
+      <li class="seat" [ngStyle]="{'flex': '0 0 ' + 100/roomInfo.columns  + '%'}" *ngFor="let col of (roomInfo.columns | appArrayRange)">
+        <input class="test" (click)="executeSeatAction(row, col)" type="checkbox" [disabled]="isSeatReserved(row,col)"
+               [checked]="isSeatChecked(row,col)" [id]="row+'_'+col"/>
+        <label [for]="row+'_'+col">{{col}}</label>
+      </li>
+    </ol>
+  </li>
+</ol>

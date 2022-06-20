@@ -3,18 +3,22 @@
                   (actualReservationCount)="setActualReservationCount($event)">
   </app-seat-panel>
 
+  <div class="pt-2 fw-bolder d-flex justify-content-center">How many tickets of each type:</div>
   <form class="form" [formGroup]="eachTicketTypeCountGroup">
     <ng-container *ngFor="let ticket of ticketData; index as i" formArrayName="eachTicketTypeCount">
       <label> {{ticket.type}}:
-        <input type="number" [formControlName]="i" [placeholder]="ticket.type+' count'" min="0" step="1" value="0">
+        <input class="form-control" type="number" [formControlName]="i" [placeholder]="ticket.type+' count'" min="0"
+               step="1" value="0">
       </label>
     </ng-container>
   </form>
-
-  <p class="error-message" *ngIf="!ticketCountMatchesSelectedSeatsCount">Number of selected seats must match total
+  <p class="error-message d-flex justify-content-center" *ngIf="!ticketCountMatchesSelectedSeatsCount">Number of
+    selected seats must match total
     number of selected tickets</p>
+
   <p>Total price: {{totalPrice}}$</p>
-  <button class="bar__pill" (click)="makeReservation()" [disabled]="!ticketCountMatchesSelectedSeatsCount || selectedSeats===0">
+  <button class="btn btn-primary w-100" (click)="makeReservation()"
+          [disabled]="!ticketCountMatchesSelectedSeatsCount || selectedSeats===0">
     Make reservation
   </button>
 </div>

@@ -49,4 +49,9 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(undefined);
   }
+
+  register(username: string, password: string): Observable<unknown> {
+    const { cinemaApiUrl } = environment;
+    return this.http.post(`${cinemaApiUrl}/register`, {username, password}, {observe: 'response'});
+  }
 }

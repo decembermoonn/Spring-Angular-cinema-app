@@ -52,6 +52,7 @@ export class AppReservationComponent {
 
   get totalPrice(): number {
     const eachTicketTypeCount = this.eachTicketTypeCountGroup.get('eachTicketTypeCount')?.value as number[];
+    if (eachTicketTypeCount.length === 0) return 0;
     return eachTicketTypeCount.map((value, index) => value * this.ticketData[index].price).reduce((l, r) => l + r);
   }
 
@@ -63,12 +64,25 @@ export class AppReservationComponent {
   }
 
   checkIfTicketCountMatchesSelectedSeatsCount(vals: { eachTicketTypeCount: number[] }): void {
-    this.ticketCountMatchesSelectedSeatsCount = vals.eachTicketTypeCount.reduce((l, r) => l + r) === this.selectedSeats;
+    if (!vals.eachTicketTypeCount.length) return;
+    this.ticketCountMatchesSelectedSeatsCount =
+      vals.eachTicketTypeCount?.reduce((l, r) => l + r) === this.selectedSeats;
   }
 
   makeReservation(): void {
-    console.log(this.panelRef.getCheckedSeatsAsReservations());
-    console.log(this.ticketData);
-    console.log(this.eachTicketTypeCountGroup.get('eachTicketTypeCount'));
+    const ticketIds = this.eachTicketTypeCountGroup
+      .get('eachTicketTypeCount')
+      ?.value.map((val: number, index: number) => Array(val).fill(index + 1))
+      .reduce((l: unknown[], r: unknown[]) => l.concat(r));
+
+    const data = {
+      screeningId: this.route.snapshot.paramMap.get('id'),
+      reservedSeatDtoList: this.panelRef.getCheckedSeatsAsReservations(),
+      ticketIds: ticketIds
+    };
+    this.reservationService.postReservation(data).subscribe({
+      next: () => this.router.navigate(['reservations']),
+      error: () => console.log("ERROR with making reservation")
+    });
   }
 }

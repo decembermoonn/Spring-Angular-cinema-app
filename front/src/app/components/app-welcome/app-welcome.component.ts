@@ -43,6 +43,6 @@ export class AppWelcomeComponent implements OnInit {
   }
 
   requestMovies(): void {
-    this.movieService.getMovies(this.moviesRequestData).subscribe();
+    this.movieService.getMovies(this.moviesRequestData).subscribe(() => scrollTo(0, 0));
   }
 }

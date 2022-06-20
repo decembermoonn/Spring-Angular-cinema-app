@@ -1,6 +1,14 @@
-.plane {
-  margin: 20px auto;
-  max-width: 300px;
+.cinema-screen {
+  margin: 1rem auto 4rem;
+  width: 90%;
+  height: 8px;
+  background-color: black;
+}
+
+.cabin {
+  overflow: auto;
+  border-style: dashed;
+  margin-top: 1rem;
 }
 
 ol {
@@ -17,9 +25,9 @@ ol {
 }
 
 .seat {
-  display: flex;
   padding: 5px;
   position: relative;
+
 
   input[type=checkbox] {
     position: absolute;
@@ -28,7 +36,7 @@ ol {
 
   input[type=checkbox]:checked {
     + label {
-      background: #bada55;
+      background: lightblue;
       -webkit-animation-name: rubberBand;
       animation-name: rubberBand;
       animation-duration: 300ms;
@@ -67,7 +75,7 @@ ol {
     font-weight: bold;
     line-height: 1.5rem;
     padding: 4px 0;
-    background: #F42536;
+    background: lightgreen;
     border-radius: 5px;
     animation-duration: 300ms;
     animation-fill-mode: both;
