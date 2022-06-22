@@ -28,7 +28,7 @@ public class ScreeningService {
   }
 
   private List<ScreeningWithMovieDto> mapToScreeningWithMovieDtos(List<Screening> screenings) {
-    return screenings.stream().map(this::mapToScreeningWithMovieDto).collect(Collectors.toList());
+    return screenings.stream().map(this::mapToScreeningWithMovieDto).toList();
   }
 
   private ScreeningWithMovieDto mapToScreeningWithMovieDto(Screening screening) {

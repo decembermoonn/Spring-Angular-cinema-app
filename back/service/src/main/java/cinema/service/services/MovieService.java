@@ -17,11 +17,10 @@ public class MovieService {
 
   private final MovieRepository movieRepository;
 
-  @SuppressWarnings("FieldCanBeLocal")
-  private final int PAGE_SIZE = 10;
-
   public MovieListWithMetadataDto getMovies(
       Sort.Direction direction, String sortProperty, String query, int page) {
+    final int PAGE_SIZE = 10;
+
     PageRequest pageRequest = PageRequest.of(page, PAGE_SIZE);
     if (direction != null && sortProperty != null) {
       pageRequest = pageRequest.withSort(direction, sortProperty);

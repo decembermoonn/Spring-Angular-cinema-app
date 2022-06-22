@@ -22,13 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @AutoConfigureMockMvc
 @WithMockUser
 @ActiveProfiles(profiles = "test")
-public class ScreeningControllerIntegrationTest {
+class ScreeningControllerIntegrationTest {
 
   @Autowired private MockMvc mvc;
   @Autowired private ScreeningRepository screeningRepository;
 
   @Test
-  public void shouldReturnValidDateIsoString() throws Exception {
+  void shouldReturnValidDateIsoString() throws Exception {
     // GIVEN
     var s = new Screening();
     s.setBeginning(LocalDateTime.now());

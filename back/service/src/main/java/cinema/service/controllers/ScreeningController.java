@@ -1,6 +1,5 @@
 package cinema.service.controllers;
 
-import cinema.service.models.Room;
 import cinema.service.models.dtos.ScreeningWithMovieDto;
 import cinema.service.services.ScreeningService;
 import lombok.RequiredArgsConstructor;

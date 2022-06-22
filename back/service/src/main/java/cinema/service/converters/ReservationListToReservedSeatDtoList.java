@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReservationListToReservedSeatDtoList {
+  private ReservationListToReservedSeatDtoList() {}
+
   public static List<ReservedSeatDto> convert(List<Reservation> reservations) {
     return reservations.stream()
         .map(

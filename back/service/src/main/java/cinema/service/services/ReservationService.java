@@ -108,13 +108,13 @@ public class ReservationService {
               reservation.setTicket(tickets.get(i));
               return reservation;
             })
-        .collect(Collectors.toList());
+        .toList();
   }
 
   private List<Ticket> mapTicketIdsToTickets(long[] ticketIds) {
     List<Ticket> tickets = ticketRepository.findAll();
     Map<Long, Ticket> ticketMap = tickets.stream().collect(Collectors.toMap(Ticket::getId, t -> t));
-    return Arrays.stream(ticketIds).mapToObj(ticketMap::get).collect(Collectors.toList());
+    return Arrays.stream(ticketIds).mapToObj(ticketMap::get).toList();
   }
 
   private LocalDateTime getMinimumDate(LocalDateTime beginning, LocalDateTime nowPlusSomeHours) {
@@ -124,17 +124,22 @@ public class ReservationService {
 
   public List<ReservationWithDetailsForUserDto> getReservationsForUser(String username) {
     List<Reservation> reservations = reservationRepository.getJoinedReservationsForUser(username);
-    var map = reservations.stream().collect(Collectors.groupingBy((Reservation::getReservationGroup)));
-    return map.entrySet().stream().map(e -> {
-      ReservationWithDetailsForUserDto newRes = new ReservationWithDetailsForUserDto();
-      Reservation pattern = e.getValue().get(0);
-      newRes.setBeginning(pattern.getScreening().getBeginning());
-      newRes.setImageUrl(pattern.getScreening().getMovie().getImageUrl());
-      newRes.setReservationGroup(e.getKey());
-      newRes.setTitle(pattern.getScreening().getMovie().getTitle());
-      newRes.setReservedSeatDtoList(ReservationListToReservedSeatDtoList.convert(e.getValue()));
-      return newRes;
-    }).collect(Collectors.toList());
+    var map =
+        reservations.stream().collect(Collectors.groupingBy((Reservation::getReservationGroup)));
+    return map.entrySet().stream()
+        .map(
+            e -> {
+              ReservationWithDetailsForUserDto newRes = new ReservationWithDetailsForUserDto();
+              Reservation pattern = e.getValue().get(0);
+              newRes.setBeginning(pattern.getScreening().getBeginning());
+              newRes.setImageUrl(pattern.getScreening().getMovie().getImageUrl());
+              newRes.setReservationGroup(e.getKey());
+              newRes.setTitle(pattern.getScreening().getMovie().getTitle());
+              newRes.setReservedSeatDtoList(
+                  ReservationListToReservedSeatDtoList.convert(e.getValue()));
+              return newRes;
+            })
+        .collect(Collectors.toList());
   }
 
   @Transactional
