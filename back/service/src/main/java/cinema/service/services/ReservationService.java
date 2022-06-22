@@ -8,6 +8,7 @@ import cinema.service.models.User;
 import cinema.service.models.dtos.ReservationDataDto;
 import cinema.service.models.dtos.ReservationWithDetailsForUserDto;
 import cinema.service.models.dtos.ReservedSeatDto;
+import cinema.service.rabbitmq.ReservationChangePublisher;
 import cinema.service.repositories.AccountRepository;
 import cinema.service.repositories.ReservationRepository;
 import cinema.service.repositories.ScreeningRepository;
@@ -19,9 +20,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -84,8 +87,13 @@ public class ReservationService {
             user,
             tickets);
 
-    reservationRepository.saveAll(reservations);
-    return ResponseEntity.ok().build();
+     reservationRepository.saveAll(reservations);
+      try {
+          ReservationChangePublisher.publish(reservationDataDto, true);
+      } catch (IOException | TimeoutException e) {
+          log.error("ERROR! Unable to publish data (however it isn't necessary).");
+      }
+      return ResponseEntity.ok().build();
   }
 
   private List<Reservation> mapDataToReservation(
