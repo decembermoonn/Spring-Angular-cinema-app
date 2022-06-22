@@ -13,6 +13,7 @@ pipeline {
                 }
             }
         }
+
         stage('Test') {
             steps {
                 dir('back') {
@@ -20,10 +21,13 @@ pipeline {
                 }
             }
         }
-      stage('SonarQube') {
-        withSonarQubeEnv() {
-          sh './gradlew sonarqube'
+
+        stage('SonarQube analysis 2') {
+            steps {
+                dir('back') {
+                    sh 'gradle sonarqube'
+                }
+            }
         }
-      }
     }
 }
