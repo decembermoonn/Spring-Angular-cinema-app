@@ -11,5 +11,26 @@ pipeline {
         }
       }
     }
+
+    stage('build') {
+      steps {
+        dir('front') {
+          nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm run-script build'
+          }
+        }
+      }
+    }
+
+    stage('test') {
+      steps {
+        dir('front') {
+          nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm run-script test'
+          }
+        }
+      }
+    }
+
   }
 }
