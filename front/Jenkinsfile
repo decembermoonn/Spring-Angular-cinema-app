@@ -1,31 +1,13 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:latest'
-    }
-  }
+  agent any
 
   stages {
     stage('install') {
       steps {
         dir('front') {
-          sh 'npm install'
-        }
-      }
-    }
-
-    stage('build') {
-      steps {
-        dir('front') {
-          sh 'npm run-script build'
-        }
-      }
-    }
-
-    stage('test') {
-      steps {
-        dir('front') {
-          sh 'npm run-script test'
+          nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm install'
+          }
         }
       }
     }
