@@ -12,25 +12,15 @@ pipeline {
       }
     }
 
-    stage('build') {
-      steps {
-        dir('front') {
-          nodejs(nodeJSInstallationName: 'nodejs') {
-              sh 'npm run-script build'
-          }
-        }
-      }
-    }
-
-    stage('test') {
-      steps {
-        dir('front') {
-          nodejs(nodeJSInstallationName: 'nodejs') {
-              sh 'npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox'
-          }
-        }
-      }
-    }
+   stage('build') {
+     steps {
+       dir('front') {
+         nodejs(nodeJSInstallationName: 'nodejs') {
+             sh 'npm run-script build'
+         }
+       }
+     }
+   }
 
   }
 }
