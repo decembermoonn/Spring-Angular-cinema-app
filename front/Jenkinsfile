@@ -8,19 +8,25 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        sh 'npm install'
+        dir('front') {
+          sh 'npm install'
+        }
       }
     }
 
     stage('build') {
       steps {
-        sh 'npm run-script build'
+        dir('front') {
+          sh 'npm run-script build'
+        }
       }
     }
 
     stage('test') {
       steps {
-        sh 'npm run-script test'
+        dir('front') {
+          sh 'npm run-script test'
+        }
       }
     }
   }
