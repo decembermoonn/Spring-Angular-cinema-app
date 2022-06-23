@@ -15,4 +15,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
   @Query("select m from Movie m where lower(m.title) like concat('%',lower(:query),'%')")
   List<Movie> findAllMoviesByTitleQuery(Pageable page, String query);
+
+  @Query("select count(m) from Movie m where lower(m.title) like concat('%',lower(:query),'%')")
+  long countAllMoviesByTitleQuery(String query);
 }

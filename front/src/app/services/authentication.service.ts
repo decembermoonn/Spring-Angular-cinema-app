@@ -3,6 +3,7 @@ import { OptionalUser } from '../models/user';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import {Router} from "@angular/router";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -12,7 +13,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     const localStorageCurrentUser = localStorage.getItem('currentUser');
     this.currentUserSubject = new BehaviorSubject<OptionalUser>(
       localStorageCurrentUser ? JSON.parse(localStorageCurrentUser) : undefined
@@ -47,6 +48,7 @@ export class AuthenticationService {
 
   logout(): void {
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
     this.currentUserSubject.next(undefined);
   }
 

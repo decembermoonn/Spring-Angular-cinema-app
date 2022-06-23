@@ -25,13 +25,18 @@ public class MovieService {
     if (direction != null && sortProperty != null) {
       pageRequest = pageRequest.withSort(direction, sortProperty);
     }
+
     List<Movie> movies;
+    long pages;
+
     if (query != null) {
       movies = movieRepository.findAllMoviesByTitleQuery(pageRequest, query);
+      pages = (long) Math.ceil((double)movieRepository.countAllMoviesByTitleQuery(query) / PAGE_SIZE);
     } else {
       movies = movieRepository.findAllMovies(pageRequest);
+      pages = (long) Math.ceil((double)movieRepository.count() / PAGE_SIZE);
     }
-    long pages = (long) Math.ceil((double)movieRepository.count() / PAGE_SIZE);
+
     return new MovieListWithMetadataDto(movies, pages);
   }
 

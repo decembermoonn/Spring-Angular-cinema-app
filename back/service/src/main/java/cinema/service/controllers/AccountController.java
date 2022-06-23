@@ -1,8 +1,10 @@
 package cinema.service.controllers;
 
+import cinema.service.models.Authority;
 import cinema.service.models.dtos.Credentials;
 import cinema.service.repositories.AccountRepository;
 import cinema.service.models.User;
+import cinema.service.repositories.AuthoritiesRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ public class AccountController {
 
   private final PasswordEncoder passwordEncoder;
   private final AccountRepository accountRepository;
+  private final AuthoritiesRepository authoritiesRepository;
 
   @PostMapping("/login")
   public ResponseEntity<Object> login(@RequestBody Credentials credentials) {
@@ -44,6 +47,10 @@ public class AccountController {
       return ResponseEntity.badRequest().body("Username is taken");
     }
     accountRepository.save(createNewUser(credentials));
+    var auth = new Authority();
+    auth.setUsername(credentials.getUsername());
+    auth.setAuthority("ROLE_USER");
+    authoritiesRepository.save(auth);
     return ResponseEntity.ok().build();
   }
 
